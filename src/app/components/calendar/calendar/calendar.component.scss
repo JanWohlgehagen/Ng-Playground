@@ -73,15 +73,23 @@
 }
 
 .drag-and-drop-zone {
-  grid-area: drag-and-drop-zone;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #ccc,
-    #ccc 10px,
-    #fff 10px,
-    #fff 20px
+  position: relative;
+  overflow: auto;
+  background: repeating-linear-gradient(
+    to bottom,
+    #eee 0px,
+    #eee 1px,
+    transparent 1px,
+    transparent 50px
   );
-  min-height: 500px;
+}
+
+.calendar-item {
+  background-color: lightblue;
+  border: 1px solid #888;
+  box-sizing: border-box;
+  cursor: move;
+  overflow: hidden;
 }
 
 .drawer-right {
@@ -95,9 +103,28 @@
   box-sizing: border-box;
 }
 
-.drag-item {
-  width: 100px;
-  height: 40px;
+.drawer-item {
+  width: 134px;
   background: lightblue;
-  cursor: move;
+  border: 1px solid #007acc;
+  box-sizing: border-box;
+  padding: 5px;
+  cursor: grab;
+  margin: 5px 0;
+  // &__wrapper {
+  //   max-height: 30px;
+  //   overflow: hidden;
+  // }
+}
+
+.calendar-item.preview {
+  background-color: rgba(30, 144, 255, 0.4);
+  border: 1px dashed #1e90ff;
+  pointer-events: auto;
+  position: absolute;
+  z-index: 30;
+}
+
+.cdk-drag-placeholder {
+  display: none !important;
 }

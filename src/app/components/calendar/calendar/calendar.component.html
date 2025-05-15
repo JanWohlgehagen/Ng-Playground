@@ -1,4 +1,4 @@
-<div style="height: 50vh; width: 50vw; overflow: hidden; margin: auto">
+<div style="height: 100vh; width: 65vw; overflow: hidden; margin: auto">
   <div class="calendar-wrapper">
     <div class="scroll-container">
       <div class="calendar">
@@ -16,15 +16,62 @@
           </div>
         </div>
 
-        <div class="drag-and-drop-zone">
-          <div cdkDrag class="drag-item">drag me!</div>
+        <div
+          cdkDropList
+          id="calendar"
+          #calendarDropZone
+          (cdkDropListDropped)="onItemDropped($event)"
+          (cdkDropListEntered)="resetPreview()"
+          [cdkDropListConnectedTo]="['drawer']"
+          class="drag-and-drop-zone"
+        >
+          <div
+            *ngFor="let item of droppedItems"
+            cdkDrag
+            [cdkDragData]="item"
+            class="calendar-item"
+            [style.position]="'absolute'"
+            [style.top.px]="getTop(item.startMinutes)"
+            [style.left.px]="getLeft(item.employeeId)"
+            [style.height.px]="getItemHeight(item.duration)"
+            [style.width.px]="columnWidth"
+          >
+            {{ item.label }}
+          </div>
+
+          <!-- Drop Preview Block -->
+          <div
+            *ngIf="previewState"
+            class="calendar-item preview"
+            [style.top.px]="getTop(previewState.startMinutes!)"
+            [style.left.px]="getLeft(previewState.employeeId!)"
+            [style.height.px]="getItemHeight(previewState.duration!)"
+            [style.width.px]="columnWidth"
+            [matTooltip]="
+              getTooltip(previewState.startMinutes!, previewState.duration!)
+            "
+          ></div>
         </div>
       </div>
     </div>
 
-    <div class="drawer-right">
-      <!-- Simulate overflowing content -->
-      <div *ngFor="let item of drawerItems">Drawer content {{ item }}</div>
+    <div
+      class="drawer-right"
+      cdkDropList
+      id="drawer"
+      [cdkDropListConnectedTo]="['calendar']"
+      (cdkDropListDropped)="onItemDropped($event)"
+    >
+      <div
+        *ngFor="let item of drawerItems"
+        cdkDrag
+        [cdkDragData]="item"
+        (cdkDragMoved)="onDragMoved($event)"
+        class="drawer-item"
+        [style.height.px]="getItemHeight(item.duration)"
+      >
+        {{ item.label }} ({{ item.duration }} min)
+      </div>
     </div>
   </div>
 </div>

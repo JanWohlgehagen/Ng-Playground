@@ -16,9 +16,9 @@ export class ScheduleService {
     const intervals: { date: Date; open: boolean }[] = [];
     const now = new Date();
     const start = new Date(now.setHours(7, 0, 0, 0)); // 07:00 today
-    const end = new Date(now.setHours(17, 0, 0, 0)); // 17:00 today
+    const end = new Date(now.setHours(17, 15, 0, 0)); // 17:00 today
 
-    for (let t = new Date(start); t < end; t.setMinutes(t.getMinutes() + 15)) {
+    for (let t = new Date(start); t < end; t.setMinutes(t.getMinutes() + 30)) {
       const hour = t.getHours();
       const open = hour >= 8 && hour < 16; // open only between 08:00 and 16:00
       intervals.push({ date: new Date(t), open });
