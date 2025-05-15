@@ -1,0 +1,103 @@
+.calendar-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto; // scrollable area + drawer
+  grid-template-rows: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.scroll-container {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas:
+    "top-left header"
+    "times-dates drag-and-drop-zone";
+  width: max-content;
+  height: max-content;
+  position: relative;
+}
+
+.top-left {
+  grid-area: top-left;
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  position: sticky;
+  top: 0;
+  background-color: #3cff00;
+  z-index: 10;
+
+  &__title {
+    font-size: 20px;
+    padding: 10px;
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.times-dates {
+  grid-area: times-dates;
+  background-color: red;
+  position: sticky;
+  left: 0;
+  z-index: 10;
+
+  &__time {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.drag-and-drop-zone {
+  grid-area: drag-and-drop-zone;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #ccc,
+    #ccc 10px,
+    #fff 10px,
+    #fff 20px
+  );
+  min-height: 500px;
+}
+
+.drawer-right {
+  background-color: #f0f0f0;
+  color: black;
+  width: 150px;
+  overflow-y: auto;
+  height: 100%;
+  position: relative; // not sticky, now separate
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.drag-item {
+  width: 100px;
+  height: 40px;
+  background: lightblue;
+  cursor: move;
+}

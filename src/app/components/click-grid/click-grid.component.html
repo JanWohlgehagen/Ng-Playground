@@ -1,0 +1,24 @@
+<div class="grid">
+    <div *ngFor="let row of grid; let rowIndex = index">
+        <div *ngFor="let cell of row; let colIndex = index" class="cell"
+        (click)="throwElement(rowIndex, colIndex)">
+        {{ cell }}
+        </div>
+    </div>
+</div>
+
+<h3>History</h3>
+<div class="history-grid">
+    <div *ngFor="let state of history; let index = index" >
+        <div>
+            <h4>Turn {{ index + 1 }}</h4>
+            <div class="history-grid__item">
+                <div *ngFor="let row of state; let rowIndex = index">
+                <div *ngFor="let cell of row; let colIndex = index" class="history-grid__item__cell">
+                    {{ cell }}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

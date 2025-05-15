@@ -1,0 +1,13 @@
+<div class="main-grid" cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="drop($event)">
+  <div cdkDrag [cdkDragStartDelay]="250" *ngFor="let el of list">
+    <ng-container *ngTemplateOutlet="el">
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #aPanel><div class="child child__one">1</div></ng-template>
+<ng-template #bPanel><div class="child child__two">2</div></ng-template>
+<ng-template #cPanel><div class="child child__three">3</div></ng-template>
+<ng-template #dPanel><div class="child child__four">4</div></ng-template>
+<ng-template #ePanel><div class="child child__five">5</div></ng-template>
+<ng-template #fPanel><div class="child child__six">6</div></ng-template>

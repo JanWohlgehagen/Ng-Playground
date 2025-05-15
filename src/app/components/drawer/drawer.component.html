@@ -1,0 +1,11 @@
+<div class="drawer" [class.open]="isOpen">
+  <div class="drawer-content">
+    <div *ngFor="let path of paths">
+      <div class="drawer-content__button" (click)="navigate(path)">
+        {{ path }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="menu-toggle" (click)="toggleDrawer()">&#9776; Components</button>

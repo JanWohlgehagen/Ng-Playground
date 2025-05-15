@@ -1,0 +1,30 @@
+<div style="height: 50vh; width: 50vw; overflow: hidden; margin: auto">
+  <div class="calendar-wrapper">
+    <div class="scroll-container">
+      <div class="calendar">
+        <div class="top-left">Top left corner</div>
+
+        <div class="header">
+          <div *ngFor="let employee of employees" class="header__title">
+            {{ employee.name }}
+          </div>
+        </div>
+
+        <div class="times-dates">
+          <div class="times-dates__time" *ngFor="let timeBlock of schedule">
+            {{ timeBlock.date | date : "shortTime" }}
+          </div>
+        </div>
+
+        <div class="drag-and-drop-zone">
+          <div cdkDrag class="drag-item">drag me!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-right">
+      <!-- Simulate overflowing content -->
+      <div *ngFor="let item of drawerItems">Drawer content {{ item }}</div>
+    </div>
+  </div>
+</div>

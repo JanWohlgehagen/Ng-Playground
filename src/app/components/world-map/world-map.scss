@@ -1,0 +1,66 @@
+.main-grid{
+    display: grid;
+    grid-template-columns: 1380px 1fr;
+}
+
+.map-container{
+    background-color:#0066cc;
+    grid-column: 1;
+}
+
+.side{
+    background-color: #082d4d;
+    padding: 15px;
+}
+
+.side-grid{
+    display: grid;
+    grid-template-areas:
+    'flag line-graph'
+    'metrics metrics ';
+    grid-template-columns: 25% 75%;
+    grid-gap: 10px;
+    padding-bottom: 25px;
+
+    &__flag {
+        grid-area: flag;
+    }
+
+    &__metrics {
+        grid-area: metrics;
+    }
+    
+    &__line-graph {
+        grid-area: line-graph;
+    }
+}
+
+.flag-image {
+    width: 80%;
+    height: auto;
+}
+
+//drag and drop
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .side-grid:last-child {
+    border: none;
+  }
+  
+  .side.cdk-drop-list-dragging .side-grid:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }

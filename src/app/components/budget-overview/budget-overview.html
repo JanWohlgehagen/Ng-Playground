@@ -1,0 +1,54 @@
+<div style="width: 80%; height: 500px; margin: auto; margin-top: 100px">
+  <div class="main">
+    <div class="graph" #graphContainer></div>
+    <div class="legend">
+      <div class="legend__items">
+        <div class="legend__item" (click)="flipShowCurrentRevenue()">
+          <img
+            *ngIf="!showCurrentRevenue"
+            src="assets/svg/visibility_off.svg"
+          />
+          <img *ngIf="showCurrentRevenue" src="assets/svg/visibility_on.svg" />
+          <div>Revenue 2024</div>
+        </div>
+        <div class="legend__item" (click)="flipShowPreviousRevenue()">
+          <img
+            *ngIf="!showPreviousRevenue"
+            src="assets/svg/visibility_off.svg"
+          />
+          <img *ngIf="showPreviousRevenue" src="assets/svg/visibility_on.svg" />
+          <div>Revenue 2023</div>
+        </div>
+        <div
+          *ngIf="budgetExist"
+          class="legend__item"
+          (click)="flipShowBudget()"
+        >
+          <img *ngIf="!showBudget" src="assets/svg/visibility_off.svg" />
+          <img *ngIf="showBudget" src="assets/svg/visibility_on.svg" />
+          <div>Budget 2024</div>
+        </div>
+        <div
+          *ngIf="budgetExist"
+          class="legend__item"
+          (click)="flipShowDifference()"
+        >
+          <img *ngIf="!showDifference" src="assets/svg/visibility_off.svg" />
+          <img *ngIf="showDifference" src="assets/svg/visibility_on.svg" />
+          <div>Difference</div>
+        </div>
+        <div>
+          <label class="switch">
+            <input
+              [(ngModel)]="showNet"
+              type="checkbox"
+              (change)="flipShowNet()"
+            />
+            <span class="slider round"></span>
+          </label>
+          <div class="gross-net-text">{{grossNetStatus}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

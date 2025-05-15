@@ -1,0 +1,15 @@
+<div class="main-grid">
+    <div class="map-container"></div>
+    <div class="side" cdkDropList (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let mark of markers" class="side-grid" cdkDrag>
+            <div class="side-grid__flag">
+                <img [src]="getFlag(mark.name)" alt="Flag" class="flag-image">
+            </div>
+            <div class="side-grid__line-graph">
+                <app-line-graph
+                [data]="mark?.graphData"></app-line-graph>
+            </div>
+            <div class="side-grid__metrics">Metric</div>
+        </div>
+    </div>
+</div>
